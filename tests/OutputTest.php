@@ -5,7 +5,7 @@ class Command
     const VERSION = '0.0.1';
     public function  printVersion()
     {
-        print 'Version is ' . self::VERSION;
+        return 'Version is ' . self::VERSION;
     }
 }
 
@@ -13,9 +13,13 @@ class OutputTest extends PHPUnit_Framework_TestCase
 {
     public function testOutputsHello()
     {
-        ob_dtart();
+        $this->expectOutputString('Version is 0.0.1');
+        //ob_start();
         $command = new Command();
-        $command->printVersion();
+        print $command->printVersion();
+        //$txt = ob_get_clean();
+        //$this->assertEquals('Version is 0.0.1', $txt);
     }
-
+//
+//08-Incomplete-and-Skipped-Tests
 }
